@@ -24,9 +24,16 @@
       margin-bottom: 4px;
     }
 
+    .tagline {
+      color: #3a5a3a;
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
     .subtitle {
       color: #5a7a5a;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       margin-bottom: 36px;
     }
 
@@ -258,6 +265,7 @@
 <body>
 
   <h1>🌿 Bay Area Trail Finder</h1>
+  <p class="tagline" id="tagline"></p>
   <p class="subtitle">SF · Peninsula · Marin · South Bay · East Bay</p>
 
   <div class="controls">
@@ -279,6 +287,39 @@
 
 <script>
   const mapsUrl = q => `https://maps.google.com/?q=${encodeURIComponent(q)}`;
+  const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+
+  const taglines = [
+    "Pick a trail. Earn a beer.",
+    "Sweat now, sip later.",
+    "Because the couch isn't going anywhere.",
+    "Less doomscrolling, more elevation gain.",
+    "Trails, dogs, and cold beer. In that order.",
+    "Your weekend, sorted."
+  ];
+
+  const buttonCopies = [
+    "Surprise me 🌿",
+    "Just pick a trail",
+    "Get me outside",
+    "Send it",
+    "Where am I going?",
+    "Outside, now."
+  ];
+
+  const drinkLabels = [
+    "You've earned it 🍺",
+    "The real finish line",
+    "Liquid recovery",
+    "Advanced hydration",
+    "Debrief location",
+    "Now go drink"
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('tagline').textContent = rand(taglines);
+    document.querySelector('.go-btn').textContent = rand(buttonCopies);
+  });
 
   const activeRegions = new Set();
 
@@ -1115,7 +1156,7 @@
         </div>
         ${dogNote}
         <div class="posthike">
-          <div class="posthike-title">Post-hike drinks</div>
+          <div class="posthike-title">${rand(drinkLabels)}</div>
           ${postHikeHtml}
           <div class="posthike-disclaimer">Always check hours ahead — spots occasionally change.</div>
         </div>
