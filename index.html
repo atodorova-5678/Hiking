@@ -1573,21 +1573,17 @@
   const SHARE_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`;
 
   function buildShareText(trail) {
-    const dogLine = trail.dogs ? ' · 🐾 Dogs OK' : '';
+    const dogLine = trail.dogs ? ' · 🐾' : '';
     const venues = trail.postHike
-      .map(p => `  ${p.name}\n  ${mapsUrl(p.mapQuery)}`)
+      .map(p => `🍺 ${p.name}\n${mapsUrl(p.mapQuery)}`)
       .join('\n\n');
     return [
       `🏔️ ${trail.name}`,
       `${trail.region} · ${trail.distance} · ${trail.difficulty}${dogLine}`,
       '',
-      `📍 Trailhead`,
-      `  ${mapsUrl(trail.trailhead)}`,
+      `📍 ${mapsUrl(trail.trailhead)}`,
+      `🥾 ${trail.allTrailsUrl}`,
       '',
-      `🥾 AllTrails`,
-      `  ${trail.allTrailsUrl}`,
-      '',
-      `🍺 After`,
       venues
     ].join('\n');
   }
