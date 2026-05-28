@@ -260,6 +260,32 @@
       max-width: 380px;
       width: 100%;
     }
+
+    .share-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid #eef2ee;
+    }
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: 1.5px solid #d4e4d4;
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-size: 0.79rem;
+      font-weight: 600;
+      color: #8aad8a;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+      font-family: inherit;
+      letter-spacing: 0.02em;
+    }
+    .share-btn:hover { border-color: #3a7d44; color: #3a7d44; background: #f5fbf5; }
+    .share-btn:disabled { opacity: 0.45; cursor: default; }
   </style>
 </head>
 <body>
@@ -1492,6 +1518,7 @@
     }
 
     const trail = weightedPick(pool);
+    currentTrail = trail;
 
     const typeLabel = { hike: "Hike", run: "Run", both: "Hike & Run" }[trail.type];
     const typeBadge = { hike: "badge-hike", run: "badge-run", both: "badge-both" }[trail.type];
@@ -1529,8 +1556,188 @@
           ${postHikeHtml}
           <div class="posthike-disclaimer">Always check hours ahead — spots occasionally change.</div>
         </div>` : ''}
+        <div class="share-row">
+          <button class="share-btn" onclick="shareCard()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Share
+          </button>
+        </div>
       </div>
     `;
+  }
+
+  let currentTrail = null;
+
+  // ── Share card ─────────────────────────────────────────────────────────────
+
+  function _countLines(ctx, text, maxWidth) {
+    const words = text.split(' ');
+    let line = '', n = 1;
+    for (const w of words) {
+      const test = line ? `${line} ${w}` : w;
+      if (line && ctx.measureText(test).width > maxWidth) { n++; line = w; }
+      else line = test;
+    }
+    return n;
+  }
+
+  function _wrapText(ctx, text, x, y, maxWidth, lineH) {
+    const words = text.split(' ');
+    let line = '';
+    for (const w of words) {
+      const test = line ? `${line} ${w}` : w;
+      if (line && ctx.measureText(test).width > maxWidth) {
+        ctx.fillText(line, x, y); y += lineH; line = w;
+      } else line = test;
+    }
+    if (line) ctx.fillText(line, x, y);
+    return y + lineH;
+  }
+
+  function _rrect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x+r, y); ctx.arcTo(x+w,y, x+w,y+h, r);
+    ctx.arcTo(x+w,y+h, x,y+h, r); ctx.arcTo(x,y+h, x,y, r);
+    ctx.arcTo(x,y, x+w,y, r); ctx.closePath();
+  }
+
+  function generateShareImage(trail) {
+    const W = 1080, P = 84, NAME_SIZE = 62, LH = 76;
+    const SF = 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif';
+
+    // Measure height dynamically
+    const tmp = document.createElement('canvas');
+    tmp.width = W; tmp.height = 1;
+    const tc = tmp.getContext('2d');
+    tc.font = `bold ${NAME_SIZE}px ${SF}`;
+    const nameLines = _countLines(tc, trail.name, W - P * 2);
+
+    const FOOTER_H = 68, TOP_BAR = 10;
+    const bodyH =
+      92 +                        // app name row
+      nameLines * LH + 16 +       // trail name
+      50 +                        // region
+      66 +                        // divider + gap
+      80 +                        // meta pills
+      66 +                        // divider + gap
+      50 +                        // "AFTER" label
+      trail.postHike.length * 48 +// venue names
+      56;                         // breathing room
+
+    const H = TOP_BAR + bodyH + FOOTER_H;
+    const cv = document.createElement('canvas');
+    cv.width = W; cv.height = H;
+    const c = cv.getContext('2d');
+    c.textBaseline = 'alphabetic';
+
+    // Background
+    c.fillStyle = '#ffffff';
+    c.fillRect(0, 0, W, H);
+
+    // Top accent bar
+    c.fillStyle = '#1e3320';
+    c.fillRect(0, 0, W, TOP_BAR);
+
+    // App name
+    c.fillStyle = '#9ab59a';
+    c.font = `500 19px ${SF}`;
+    c.textAlign = 'left';
+    c.fillText('BAY AREA TRAIL & BEER FINDER', P, 62);
+
+    // Trail name
+    c.fillStyle = '#1a2e1a';
+    c.font = `bold ${NAME_SIZE}px ${SF}`;
+    let y = _wrapText(c, trail.name, P, 148, W - P * 2, LH);
+
+    // Region
+    c.fillStyle = '#7a9a7a';
+    c.font = `500 19px ${SF}`;
+    c.fillText(trail.region.toUpperCase(), P, y + 4);
+    y += 46;
+
+    // Divider
+    const drawDivider = (yy) => {
+      c.strokeStyle = '#e4ebe4'; c.lineWidth = 1.5;
+      c.beginPath(); c.moveTo(P, yy); c.lineTo(W - P, yy); c.stroke();
+    };
+    drawDivider(y); y += 48;
+
+    // Meta pills
+    c.font = `500 21px ${SF}`;
+    const pills = [trail.distance, trail.difficulty, trail.dogs ? '🐾 Dogs OK' : 'No dogs'];
+    let px = P;
+    for (const label of pills) {
+      const tw = c.measureText(label).width;
+      const pw = tw + 38, ph = 46, pr = 23;
+      _rrect(c, px, y - 32, pw, ph, pr);
+      c.fillStyle = '#edf2ed'; c.fill();
+      c.fillStyle = '#4a6a4a'; c.fillText(label, px + 19, y);
+      px += pw + 12;
+    }
+    y += 36;
+
+    // Divider
+    drawDivider(y); y += 46;
+
+    // Post-hike label
+    c.fillStyle = '#b8933a';
+    c.font = `600 14px ${SF}`;
+    c.fillText('AFTER THE TRAIL', P, y);
+    y += 46;
+
+    // Venues
+    for (const p of trail.postHike) {
+      c.fillStyle = '#1a1a0a';
+      c.font = `bold 27px ${SF}`;
+      c.fillText(p.name, P, y);
+      y += 44;
+    }
+
+    // Footer
+    c.fillStyle = '#f4f7f4';
+    c.fillRect(0, H - FOOTER_H, W, FOOTER_H);
+    c.fillStyle = '#9ab59a';
+    c.font = `500 16px ${SF}`;
+    c.textAlign = 'center';
+    c.fillText('Bay Area Trail & Beer Finder', W / 2, H - 20);
+
+    return cv;
+  }
+
+  async function shareCard() {
+    if (!currentTrail) return;
+    const btn = document.querySelector('.share-btn');
+    if (btn) { btn.textContent = '…'; btn.disabled = true; }
+
+    const canvas = generateShareImage(currentTrail);
+    canvas.toBlob(async blob => {
+      const file = new File([blob], 'trail.png', { type: 'image/png' });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file] });
+        } catch (e) {
+          if (e.name !== 'AbortError') _downloadBlob(blob);
+        }
+      } else {
+        _downloadBlob(blob);
+      }
+
+      if (btn) {
+        btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> Share`;
+        btn.disabled = false;
+      }
+    }, 'image/png');
+  }
+
+  function _downloadBlob(blob) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'trail.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   }
 </script>
 </body>
