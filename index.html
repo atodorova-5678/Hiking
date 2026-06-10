@@ -479,6 +479,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/fort-funston-coastal-trail",
       trailhead: "Fort Funston, end of John Muir Dr, San Francisco, CA 94132",
+      dogNote: "Off-leash under voice control in most of the park",
       description: "The full loop takes you along 200-foot wind-sculpted sand bluffs, past the concrete ruins of Battery Davis, and down to the beach for a return along the surf — a dramatic coastal landscape most SF residents have never explored beyond the dog-parking-lot view. Off-leash areas throughout make this one of the best dog hikes in the city.",
       postHike: [
         { name: "Fifty Vara", note: "Outer Sunset brewpub in the former Sunset Reservoir space — house-brewed beers and a seasonal California menu", mapQuery: "Fifty Vara Noriega Street San Francisco CA" },
@@ -708,6 +709,7 @@
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/burdell-mountain-loop",
       trailhead: "End of San Andreas Dr, Novato, CA 94947",
       headsUp: "Nearly zero shade — start early on hot days",
+      dogNote: "Off-leash OK on fire roads; leash up on single-track",
       description: "At 1,558 feet, Burdell delivers what may be Marin's best all-directions panorama — San Pablo Bay, the coastal hills, and on clear days the Sierra Nevada. The relentless, rocky, largely shadeless climb self-selects for people who want a hard effort, and the off-leash fire-road policy makes it a rare treat for dogs; spring wildflowers on the upper grasslands are exceptional.",
       postHike: [
         { name: "HenHouse Brewing — The Record Room", note: "Downtown Novato beer garden from one of the Bay Area's best breweries — known for Big Chicken DIPA, 10 min away", mapQuery: "HenHouse Brewing Record Room Novato CA" },
@@ -829,6 +831,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/dusky-footed-woodrat-and-cordilleras-trails",
       trailhead: "Pulgas Ridge Open Space, 167 Edmonds Rd, Redwood City, CA",
+      dogNote: "Leash on the trails — 17.5-acre off-leash area at the heart of the preserve",
       description: "One of the only off-leash dog areas in the Midpeninsula open space system. Gentle woodland trails through madrone and oak, just off 280 near Edgewood Road. Great for a quick after-work romp.",
       postHike: [
         { name: "Dutch Goose", note: "Menlo Park classic — 10 min from the trailhead, great burgers and beer selection", mapQuery: "Dutch Goose Menlo Park CA" },
@@ -875,7 +878,7 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/shoreline-park-loop",
       trailhead: "Shoreline at Mountain View, Shoreline Blvd, Mountain View, CA",
-      description: "Flat loop around Shoreline Lake in Mountain View with open bay views and steady wind. Popular with runners and dog walkers — wide paths, no elevation, and a reliably pleasant outing any time of year.",
+      description: "Flat loop around Shoreline Lake in Mountain View with open bay views and steady wind. Popular with runners and walkers — wide paths, no elevation, and a reliably pleasant outing any time of year.",
       postHike: [
         { name: "Steins Beer Garden", note: "Villa St in downtown Mountain View — excellent beer garden with a serious draft list and good food", mapQuery: "Steins Beer Garden Mountain View CA" },
         { name: "Das Bierhauz", note: "Mountain View beer garden with 31 taps, craft cocktails, and modern American food made from scratch", mapQuery: "Das Bierhauz Mountain View CA" }
@@ -919,7 +922,7 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/russian-ridge-trail--3",
       trailhead: "Russian Ridge Open Space Preserve, Skyline Blvd, Palo Alto, CA",
-      description: "Open ridgeline at the top of Skyline with sweeping views in every direction — bay, Pacific, and the Santa Cruz Mountains. Meadows bloom intensely in spring. Dogs allowed on some trails in the preserve.",
+      description: "Open ridgeline at the top of Skyline with sweeping views in every direction — bay, Pacific, and the Santa Cruz Mountains. Meadows bloom intensely in spring.",
       postHike: [
         { name: "Alice's Restaurant", note: "Skyline Blvd institution — minutes from Russian Ridge, cold beer, burgers, biker crowd", mapQuery: "Alice's Restaurant Woodside CA" },
         { name: "Alpine Inn", note: "Down Page Mill Rd in Portola Valley — cold beer, picnic tables, a legendary local spot since 1850", mapQuery: "Alpine Inn Portola Valley CA" }
@@ -1773,7 +1776,7 @@
     const typeBadge = { hike: "badge-hike", run: "badge-run", both: "badge-both" }[trail.type];
 
     const dogNote = trail.dogs
-      ? `<div class="dog-note">🐾 <span>Dogs allowed on leash</span></div>`
+      ? `<div class="dog-note">🐾 <span>${trail.dogNote || 'Dogs allowed on leash'}</span></div>`
       : `<div class="dog-note" style="color:#b07070;">🚫 <span>No dogs permitted</span></div>`;
 
     const headsUpNote = trail.headsUp
