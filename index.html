@@ -261,6 +261,20 @@
       width: 100%;
     }
 
+    .heads-up {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 0.84rem;
+      line-height: 1.5;
+      color: #8a6d1f;
+      background: #fff8e1;
+      border: 1px solid #f3e5b8;
+      border-radius: 10px;
+      padding: 9px 13px;
+      margin-bottom: 14px;
+    }
+
     .share-row {
       display: flex;
       justify-content: flex-end;
@@ -557,6 +571,7 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/dipsea-trail-from-mill-valley-trail-head",
       trailhead: "Cascade Dr at Dipsea Steps, Mill Valley, CA",
+      headsUp: "Point-to-point — stage a car at Stinson Beach or plan the shuttle back",
       description: "Legendary point-to-point trail over Mount Tamalpais. Steep stairs, redwood shade, and an ocean finish at Stinson Beach. A bucket-list Bay Area run.",
       postHike: [
         { name: "Buckeye Roadhouse", note: "Classic Mill Valley roadhouse on the drive back — full bar, big fireplace, solid comfort food", mapQuery: "Buckeye Roadhouse Mill Valley CA" },
@@ -572,6 +587,7 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/dipsea-steep-ravine-matt-davis-loop-trail-from-pantoll",
       trailhead: "Pantoll Ranger Station, 3801 Panoramic Hwy, Mill Valley, CA",
+      headsUp: "$8 day-use fee at the Pantoll lot",
       description: "Traverses the western slopes of Mount Tamalpais through chaparral and forest, with sweeping Pacific Ocean views. One of the most beautiful trails in all of Marin.",
       postHike: [
         { name: "Tam Tavern", note: "East Brother Beer Co. brewpub at the foot of Mount Tam in Mill Valley — award-winning craft lagers and IPAs, beer garden with fire pits, 10 min from Pantoll", mapQuery: "Tam Tavern Mill Valley CA" },
@@ -691,6 +707,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/burdell-mountain-loop",
       trailhead: "End of San Andreas Dr, Novato, CA 94947",
+      headsUp: "Nearly zero shade — start early on hot days",
       description: "At 1,558 feet, Burdell delivers what may be Marin's best all-directions panorama — San Pablo Bay, the coastal hills, and on clear days the Sierra Nevada. The relentless, rocky, largely shadeless climb self-selects for people who want a hard effort, and the off-leash fire-road policy makes it a rare treat for dogs; spring wildflowers on the upper grasslands are exceptional.",
       postHike: [
         { name: "HenHouse Brewing — The Record Room", note: "Downtown Novato beer garden from one of the Bay Area's best breweries — known for Big Chicken DIPA, 10 min away", mapQuery: "HenHouse Brewing Record Room Novato CA" },
@@ -797,6 +814,7 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/chinquapin-trail",
       trailhead: "Huddart County Park, Kings Mountain Rd, Woodside, CA",
+      headsUp: "$6 vehicle fee at the park entrance",
       description: "Second-growth redwood and mixed forest in the Woodside hills, with fern-lined creekside stretches and enough elevation to feel like a real workout. A quieter, more accessible cousin to the bigger Santa Cruz Mountain parks.",
       postHike: [
         { name: "Alice's Restaurant", note: "10 min up Woodside Rd to Skyline — classic biker/hiker hangout, cold beer, burgers", mapQuery: "Alice's Restaurant Woodside CA" }
@@ -978,6 +996,7 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/brooks-falls-loop",
       trailhead: "600 Oddstad Blvd, Pacifica, CA 94044",
+      headsUp: "$6 vehicle fee at San Pedro Valley County Park",
       description: "A compact but punchy loop gaining 639 ft through a lush creek canyon tucked behind Pacifica's Linda Mar neighborhood, culminating at Brooks Falls — a 175-foot, three-tiered seasonal waterfall at its best November through April. Popular with trail runners for its short length and sustained grade, with panoramic coastal views appearing as you climb toward the Montara Mountain ridge.",
       postHike: [
         { name: "Humble Sea Brewing", note: "Coastal craft brewery in Pacifica known for hazy IPAs and West Coast ales — 7 min from the trailhead", mapQuery: "Humble Sea Brewing Pacifica CA" },
@@ -993,6 +1012,7 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/parks/us/california/huddart-county-park",
       trailhead: "Huddart County Park, 1100 Kings Mountain Rd, Woodside, CA 94062",
+      headsUp: "$6 vehicle fee at the Huddart Park entrance",
       description: "Descend from Huddart Park's redwood-tanoak forest into the virtually undiscovered Phleger Estate — 1,200 acres of old-growth and recovering redwood along West Union Creek — before looping back via Crystal Springs Trail. Phleger is intentionally kept off Skyline signage to discourage crowds, meaning you'll have ancient creek canyons almost entirely to yourself.",
       postHike: [
         { name: "Freewheel Brewing", note: "English-style craft brewery in Redwood City with cask-conditioned ales and a full pub menu — 15 min from Huddart", mapQuery: "Freewheel Brewing Company Redwood City CA" },
@@ -1008,7 +1028,8 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/tarwater-trail-loop",
       trailhead: "Camp Pomponio Rd off Alpine Rd, La Honda, CA 94020",
-      description: "Old-growth redwood groves, ghost ruins of a 19th-century dairy farm, and the largest Coast Redwood in the Santa Cruz Mountains — all on a trail with almost zero weekend crowds compared to nearby Portola Redwoods. The rooted, creek-crossing character is beloved by trail runners. Always check access ahead — construction periodically affects trailhead entry.",
+      headsUp: "Check access before driving out — construction periodically closes the trailhead road",
+      description: "Old-growth redwood groves, ghost ruins of a 19th-century dairy farm, and the largest Coast Redwood in the Santa Cruz Mountains — all on a trail with almost zero weekend crowds compared to nearby Portola Redwoods. The rooted, creek-crossing character is beloved by trail runners.",
       postHike: [
         { name: "Duarte's Tavern", note: "James Beard America's Classic since 1894 in Pescadero — legendary artichoke soup, olallieberry pie, and a proper old California bar", mapQuery: "Duarte's Tavern Pescadero CA" },
         { name: "Half Moon Bay Brewing Company", note: "Classic harbor patio with fire pits and house-brewed beer, ~25 min west via Hwy 84", mapQuery: "Half Moon Bay Brewing Company Half Moon Bay CA" }
@@ -1040,6 +1061,7 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/stanford-dish-loop-trail",
       trailhead: "586 Junipero Serra Blvd, Stanford, CA 94305",
+      headsUp: "Gates lock at sunset, sharp",
       description: "The Radio Telescope's giant dish anchors one of the Bay Area's most iconic trail views — a paved loop across rolling Stanford foothills with sweeping 360° panoramas of the Bay, the Peninsula, and on clear days, the Diablo Range. Open grassy slopes, plenty of bench stops, perennially one of the most popular routes in the region.",
       postHike: [
         { name: "Barebottle Brewing — Menlo Park", note: "Award-winning brewery known for hazy IPAs — relaxed taproom with pinball, board games, and pizza on-site. Consistently the top-rated brewery in the area, 10 min north", mapQuery: "Barebottle Brewing Menlo Park, Menlo Park, CA" },
@@ -1147,6 +1169,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/larry-lane-trail",
       trailhead: "Portola Rd at Hayfields Rd, Portola Valley, CA 94028",
+      headsUp: "Tiny roadside pullout in a residential area — park considerately",
       description: "A quiet, low-traffic gem in Portola Valley that climbs through rolling open grassland with sweeping ridge views — you're unlikely to encounter many others on this trail. The compact route packs in real gain and is best enjoyed when the hills are golden.",
       postHike: [
         { name: "Alpine Inn (Rossotti's)", note: "The quintessential Portola Valley post-hike tradition — 170-year-old beer garden two miles away with outdoor seating, burgers, and rotating taps", mapQuery: "Alpine Inn 3915 Alpine Rd Portola Valley CA" },
@@ -1177,6 +1200,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/schilling-lake-via-bridle-trail",
       trailhead: "895 La Honda Rd (Hwy 84), Woodside, CA 94062",
+      headsUp: "Only ~5 parking spots at the trailhead — have a backup plan",
       description: "A short, atmospheric out-and-back through old-growth Douglas fir and redwood to peaceful Schilling Lake, tucked inside the 167-acre Thornewood Open Space Preserve above Woodside. The preserve's intimate size and scarcity of visitors make it feel like a private woodland estate.",
       postHike: [
         { name: "Alpine Inn (Rossotti's)", note: "About 10 minutes from Thornewood — the go-to Peninsula post-hike institution with a legendary outdoor beer garden", mapQuery: "Alpine Inn 3915 Alpine Rd Portola Valley CA" },
@@ -1192,6 +1216,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/madera-point-and-bobcat-point-via-the-arastradero-creek-and-coyote-trail",
       trailhead: "1530 Arastradero Rd, Palo Alto, CA 94304",
+      headsUp: "Dogs are weekday-only on the Foothills Preserve section of this loop",
       description: "The longest route in Pearson-Arastradero Preserve strings together open oak savanna, a creek riparian corridor, and twin hilltop viewpoints across 7.2 miles of rolling Peninsula terrain. A restored cattle ranch with native grasslands — outstanding wildlife habitat and expansive valley views with no entrance fee.",
       postHike: [
         { name: "Alpine Inn (Rossotti's)", note: "Just 1 mile from the trailhead on Alpine Rd — the most convenient post-hike beer in the Bay Area, historic outdoor beer garden since 1852", mapQuery: "Alpine Inn 3915 Alpine Rd Portola Valley CA" },
@@ -1311,6 +1336,7 @@
       dogs: false,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/wildcat-canyon-loop",
       trailhead: "Rancho San Antonio Open Space Preserve, Cristo Rey Dr, Los Altos, CA",
+      headsUp: "Lots fill fast on weekend mornings — go early",
       description: "A popular loop through oak woodland and open grassland, with deer and hawks frequently spotted. The farm at the trailhead (with real animals) is a bonus.",
       postHike: [
         { name: "Laughing Monk Brewing", note: "Los Altos taproom inside State Street Market — just 5 min from the trailhead, opened March 2026, excellent rotating taps", mapQuery: "Laughing Monk Brewing Los Altos CA" }
@@ -1385,7 +1411,8 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/upper-basin-and-black-rock-falls-via-contour-and-waterfall-loop",
       trailhead: "8515 Croy Rd, Morgan Hill, CA 95037",
-      description: "Uvas Canyon hides six named waterfalls on a single loop, including the dramatic double-drop of Black Rock Falls — best November through April when the creek runs full, but the dense forest canopy keeps it cool and green even in summer. One of the South Bay's most underrated short hikes; weekend visits require advance reservation ($6 at gooutsideandplay.org).",
+      headsUp: "Weekends & holidays require an advance reservation — $6 at gooutsideandplay.org",
+      description: "Uvas Canyon hides six named waterfalls on a single loop, including the dramatic double-drop of Black Rock Falls — best November through April when the creek runs full, but the dense forest canopy keeps it cool and green even in summer. One of the South Bay's most underrated short hikes.",
       postHike: [
         { name: "Kelly Brewing Company", note: "Family-run craft brewery in downtown Morgan Hill with open fermentation tanks on site — 15 min from the trailhead", mapQuery: "Kelly Brewing Company Morgan Hill CA" }
       ]
@@ -1399,6 +1426,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/sanborn-loop-to-indian-rock",
       trailhead: "16055 Sanborn Rd, Saratoga, CA 95070",
+      headsUp: "$6 vehicle fee at the park entrance",
       description: "A dense, shaded climb through one of the few intact old-growth redwood groves in the South Bay foothills, emerging at Indian Rock — a weathered sandstone formation with sweeping views of the Santa Cruz Mountains. The forest floor is carpeted with ferns and sorrel, and the trail is legitimately cool on hot summer days when the rest of the South Bay is baking.",
       postHike: [
         { name: "Out of the Barrel", note: "Los Gatos wine and craft beer bar right on the Los Gatos–Saratoga corridor — the natural post-Sanborn stop, ~10 min away", mapQuery: "Out of the Barrel Los Gatos CA" },
@@ -1430,6 +1458,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/tony-look-trail-to-coyote-ridge-to-lookout-trail-loop--2",
       trailhead: "Stevens Creek County Park, 11401 Stevens Canyon Rd, Cupertino, CA 95014",
+      headsUp: "$6 vehicle fee at the park entrance",
       description: "A satisfying loop through Stevens Creek County Park that earns panoramic views of the reservoir and San Jose Valley from Coyote Ridge before descending through shaded forest. The combination of reservoir scenery, open ridgeline, and forested canyon makes this one of the best all-around South Bay loop hikes.",
       postHike: [
         { name: "Loma Brewing Company", note: "Award-winning craft brewery in downtown Los Gatos — great food, rotating taps, lively indoor/outdoor space, 15 min south", mapQuery: "Loma Brewing Company Los Gatos CA" },
@@ -1445,6 +1474,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/jones-manzanita-range-novitiate-trail-loop",
       trailhead: "End of Jones Rd, Los Gatos, CA 95032",
+      headsUp: "Street parking at Jones Rd is scarce — the $6 Lexington Reservoir lot is the backup",
       description: "A satisfying loop at St. Joseph's Hill Open Space that climbs steadily through chaparral to hilltop views of Lexington Reservoir and the Santa Cruz Mountains, then descends through shaded Manzanita forest. Despite its modest mileage, the 636 ft of gain and variety of terrain make it feel more substantial than the numbers suggest.",
       postHike: [
         { name: "Loma Brewing Company", note: "Downtown Los Gatos craft brewery with excellent pub food and a lively patio minutes from the trailhead", mapQuery: "Loma Brewing Company Los Gatos CA" },
@@ -1460,6 +1490,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/saratoga-to-the-skyline-trail-to-viewpoint",
       trailhead: "Quarry Park, 22000 Congress Springs Rd (Hwy 9), Saratoga, CA 95070",
+      headsUp: "Small gravel lot (~25 spaces) — arrive early on weekends",
       description: "Departing from Saratoga's charming Quarry Park — a former limestone quarry with stone architecture — this trail climbs steadily toward Skyline Blvd through redwood and chaparral, earning sweeping Santa Cruz Mountain views from the viewpoint. Opened in 2020, it's one of the newest and most rewarding links in the regional trail network.",
       postHike: [
         { name: "Loma Brewing Company", note: "A short drive down the hill to Los Gatos for craft beer, tacos, and a celebratory pint after the climb", mapQuery: "Loma Brewing Company Los Gatos CA" },
@@ -1475,6 +1506,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/bay-area-ridge-trail-sanborn-county-park-john-nicholas-trail",
       trailhead: "Sunnyvale Mountain Staging Area, Skyline Blvd (CA-35), Saratoga, CA 95070",
+      headsUp: "Start from the Skyline staging area — the Sanborn Rd end has no-parking signs",
       description: "Beautifully engineered singletrack through the shaded redwood-and-oak canyon of Sanborn County Park, part of the Bay Area Ridge Trail — considered one of the best-built trail segments in the South Bay. Over 1,100 ft of gain through a secluded creek canyon with almost no road noise delivers genuine wilderness feel within minutes of Silicon Valley.",
       postHike: [
         { name: "Loma Brewing Company", note: "15 minutes down the hill — perfect for post-trail craft beer and food in downtown Los Gatos", mapQuery: "Loma Brewing Company Los Gatos CA" },
@@ -1492,6 +1524,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/mission-peak-loop-from-stanford-avenue-staging-area",
       trailhead: "Mission Peak Regional Preserve, Stanford Ave, Fremont, CA",
+      headsUp: "Stanford Ave lot fills by early morning on weekends — Ohlone College overflow lot (small fee) is the reliable backup",
       description: "The iconic Fremont peak that looms over the East Bay. Brutal 2,000 ft of gain in 3 miles — but the summit views stretching from the Delta to the Pacific are extraordinary.",
       postHike: [
         { name: "California Craft Beer", note: "Beer bar in Fremont — 400+ bottles and 16 rotating taps, 7 min from the Stanford Ave trailhead", mapQuery: "California Craft Beer Fremont CA" },
@@ -1566,6 +1599,7 @@
       dogs: true,
       allTrailsUrl: "https://www.alltrails.com/trail/us/california/nortonville-and-black-diamond-loop",
       trailhead: "Black Diamond Mines Regional Preserve, Somersville Rd, Antioch, CA",
+      headsUp: "$5 parking + $2 dog fee when the entrance kiosk is staffed",
       description: "Former coal and sand mine turned hiking area near Antioch. Unusual geology, wildflowers in spring, and a quirky history. Views across the Delta on clear days.",
       postHike: [
         { name: "Hop Asylum", note: "Craft beer bar in Brentwood with a wide rotating tap selection — ~14 min from the trailhead, the closest beer-focused stop", mapQuery: "Hop Asylum Brentwood CA" },
@@ -1742,6 +1776,10 @@
       ? `<div class="dog-note">🐾 <span>Dogs allowed on leash</span></div>`
       : `<div class="dog-note" style="color:#b07070;">🚫 <span>No dogs permitted</span></div>`;
 
+    const headsUpNote = trail.headsUp
+      ? `<div class="heads-up">💡 <span>${trail.headsUp}</span></div>`
+      : '';
+
     const postHikeHtml = trail.postHike.map(p => `
       <a href="${mapsUrl(p.mapQuery)}" target="_blank" class="posthike-item">
         <span class="map-arrow">🍺 ↗</span>
@@ -1765,6 +1803,7 @@
           <span class="meta-pill">📍 ${trail.distance}</span>
           <span class="meta-pill">⛰️ ${trail.difficulty}</span>
         </div>
+        ${headsUpNote}
         ${dogNote}
         ${trail.postHike.length > 0 ? `<div class="posthike">
           <div class="posthike-title">${rand(drinkLabels)}</div>
@@ -1795,6 +1834,7 @@
     return [
       `🏔️ ${trail.name}`,
       `${trail.region} · ${trail.distance} · ${trail.difficulty}${dogLine}`,
+      ...(trail.headsUp ? [`💡 ${trail.headsUp}`] : []),
       '',
       `📍 ${mapsUrl(trail.trailhead)}`,
       `🥾 ${trail.allTrailsUrl}`,
