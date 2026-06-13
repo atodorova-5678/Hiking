@@ -42,7 +42,14 @@
       flex-direction: column;
       align-items: center;
       gap: 16px;
+      margin-top: 34px;
       margin-bottom: 36px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
     }
 
     .filter-row {
@@ -304,15 +311,20 @@
 </head>
 <body>
 
-  <h1>🏔️ Bay Area Trail & Beer Finder</h1>
+  <h1>Bay Area Trail & Beer Finder</h1>
   <p class="tagline" id="tagline"></p>
-  <p class="subtitle">SF · Peninsula · Marin · South Bay · East Bay</p>
 
   <div class="controls">
-    <label class="filter-row">
-      <input type="checkbox" id="dogFilter" />
-      🐾 Dog friendly only
-    </label>
+    <div class="toggle-row">
+      <label class="filter-row">
+        <input type="checkbox" id="dogFilter" onchange="if(this.checked)document.getElementById('epicFilter').checked=false" />
+        Dog mode
+      </label>
+      <label class="filter-row">
+        <input type="checkbox" id="epicFilter" onchange="if(this.checked)document.getElementById('dogFilter').checked=false" />
+        Epic
+      </label>
+    </div>
     <div class="region-filters">
       <button class="region-btn" data-region="San Francisco" onclick="toggleRegion(this)">SF</button>
       <button class="region-btn" data-region="Marin" onclick="toggleRegion(this)">Marin</button>
@@ -561,6 +573,55 @@
       postHike: [
         { name: "Beach Chalet Brewery", note: "House-brewed ales and Pacific sunset views at Ocean Beach, 10 min down the Great Highway", mapQuery: "Beach Chalet Brewery San Francisco CA" },
         { name: "Delarosa Marina", note: "Roman-style pizza and craft beer on Chestnut St — Marina staple, 10 min away", mapQuery: "Delarosa Marina San Francisco CA" }
+      ]
+    },
+
+    {
+      name: "San Francisco Crosstown Trail",
+      region: "San Francisco",
+      type: "both",
+      distance: "17.1 mi",
+      difficulty: "Hard",
+      dogs: true,
+      allTrailsUrl: "https://www.alltrails.com/trail/us/california/san-francisco-crosstown-trail",
+      trailhead: "Sunrise Point, Candlestick Point SRA, San Francisco, CA 94124",
+      headsUp: "Point-to-point clear across the city — it ends ~17 mi away at Lands End, so plan a Muni or rideshare back",
+      description: "The ultimate San Francisco day: a 17-mile diagonal that stitches the whole city together from Candlestick Point in the southeast to Lands End in the northwest, threading hidden stairways, the Glen Canyon creek, Twin Peaks, the Mosaic Steps, and Golden Gate Park before finishing on the coastal bluffs. It's less a hike than a love letter to the city's secret seams — and a genuine endurance outing.",
+      postHike: [
+        { name: "Beach Chalet Brewery", note: "House-brewed ales and Pacific views right at the Lands End finish — dog-friendly Park Chalet beer garden out back", mapQuery: "Beach Chalet Brewery San Francisco CA" },
+        { name: "The Riptide", note: "Cozy Outer Sunset dive with a dog-friendly room and a fireplace — a fitting end-of-the-city reward", mapQuery: "The Riptide Bar San Francisco CA" }
+      ]
+    },
+    {
+      name: "Double Cross Trail",
+      region: "San Francisco",
+      type: "both",
+      distance: "14.2 mi",
+      difficulty: "Hard",
+      dogs: true,
+      allTrailsUrl: "https://www.alltrails.com/trail/us/california/double-cross-trail",
+      trailhead: "Fort Funston Main Parking Lot, Fort Funston Rd, San Francisco, CA 94132",
+      headsUp: "Point-to-point — starts at Fort Funston, finishes at Pier 23 on the Embarcadero; plan transit back",
+      description: "The Crosstown Trail's wilder cousin: a 14-mile traverse from the Fort Funston bluffs up over Twin Peaks, Tank Hill, and Buena Vista, then down through Chinatown, North Beach, and over Telegraph Hill to the northeast waterfront. It trades the official route's parks for a denser, stair-heavy crossing of the city's spine — a connoisseur's urban epic.",
+      postHike: [
+        { name: "Fort Point Beer Company", note: "Waterfront brewery in the Ferry Building with dog-friendly outdoor seating — minutes from the Pier 23 finish", mapQuery: "Fort Point Beer Company Ferry Building San Francisco CA" },
+        { name: "Rogue Ales Public House", note: "North Beach pub with a big dog-friendly back patio — right on the route's home stretch", mapQuery: "Rogue Ales Public House North Beach San Francisco CA" }
+      ]
+    },
+    {
+      name: "Golden Gate Park, Lands End & Presidio Loop",
+      region: "San Francisco",
+      type: "both",
+      distance: "11.3 mi",
+      difficulty: "Moderate",
+      dogs: true,
+      allTrailsUrl: "https://www.alltrails.com/trail/us/california/golden-gate-park-lands-end-and-presidio-loop",
+      trailhead: "Lands End Lookout, Merrie Way, San Francisco, CA 94121",
+      headsUp: "Big loop — start anywhere on it; the Lands End lot fills early on clear weekends",
+      description: "A grand loop linking three of the city's greatest green spaces: the wooded paths of Golden Gate Park, the cliffside drama of Lands End above the Golden Gate, and the forested ridges of the Presidio. At 11+ miles it's the rare San Francisco epic that's an actual loop — no shuttle needed — and it strings together more iconic coastline per mile than almost anything in the Bay.",
+      postHike: [
+        { name: "Beach Chalet Brewery", note: "House-brewed ales at the west end of Golden Gate Park, right on the loop — dog-friendly Park Chalet beer garden", mapQuery: "Beach Chalet Brewery San Francisco CA" },
+        { name: "Delarosa Marina", note: "Roman-style pizza and craft beer on Chestnut St near the Presidio leg — heated dog-friendly parklet", mapQuery: "Delarosa Marina San Francisco CA" }
       ]
     },
 
@@ -1993,11 +2054,13 @@
 
   function suggest() {
     const dogOnly = document.getElementById("dogFilter").checked;
+    const epicOnly = document.getElementById("epicFilter").checked;
     const output = document.getElementById("output");
 
     let pool = trails;
     if (activeRegions.size > 0) pool = pool.filter(t => activeRegions.has(t.region));
     if (dogOnly) pool = pool.filter(t => t.dogs && parseMiles(t.distance) <= 5);
+    if (epicOnly) pool = pool.filter(t => parseMiles(t.distance) >= 8);
 
     if (pool.length === 0) {
       output.innerHTML = `<div class="no-results">No trails match your filters. Try adjusting your region or filters.</div>`;
