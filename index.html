@@ -2098,9 +2098,6 @@
     const trail = weightedPick(pool);
     currentTrail = trail;
 
-    const typeLabel = { hike: "Hike", run: "Run", both: "Hike & Run" }[trail.type];
-    const typeBadge = { hike: "badge-hike", run: "badge-run", both: "badge-both" }[trail.type];
-
     const dogNote = trail.dogs
       ? `<div class="dog-note">🐾 <span>${trail.dogNote || 'Dogs allowed on leash'}</span></div>`
       : `<div class="dog-note" style="color:#b07070;">🚫 <span>No dogs permitted</span></div>`;
@@ -2120,7 +2117,6 @@
       <div class="card">
         <div class="card-header">
           <div class="trail-name">${trail.name}</div>
-          <span class="badge ${typeBadge}">${typeLabel}</span>
         </div>
         <div class="region-row">
           <span class="region">${trail.displayRegion || trail.region}</span>
@@ -2129,8 +2125,8 @@
         </div>
         <p class="description">${trail.description}</p>
         <div class="meta">
-          <span class="meta-pill">📍 ${trail.distance}</span>
-          <span class="meta-pill">⛰️ ${trail.difficulty}</span>
+          <span class="meta-pill">${trail.distance}</span>
+          <span class="meta-pill">${trail.difficulty}</span>
         </div>
         ${headsUpNote}
         ${dogNote}
