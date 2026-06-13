@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  html,body{margin:0;padding:0;background:#f0f4f0;}
+  #og{display:block;}
+</style>
+</head>
+<body>
+<svg id="og" width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <rect x="0" y="0" width="1200" height="630" fill="#f0f4f0"/>
+
+  <text x="60" y="96" font-size="40" font-weight="700" fill="#1a2e1a">Bay Area Trail</text>
+  <text x="60" y="142" font-size="40" font-weight="700" fill="#1a2e1a">&amp; Beer Finder</text>
+  <text x="62" y="178" font-size="18" font-style="italic" fill="#3a5a3a">One button. One trail. One cold beer at the end.</text>
+
+  <text x="60" y="282" font-size="86" font-weight="700" fill="#3a7d44">106</text>
+  <text x="232" y="282" font-size="26" font-weight="600" fill="#3a5a3a">trails</text>
+  <text x="62" y="316" font-size="18" fill="#4a6a4a">76 dog-friendly · 14 epic (8 mi+)</text>
+
+  <g font-size="19" fill="#2d4a2d">
+    <circle cx="71" cy="372" r="8" fill="#7F77DD"/><text x="92" y="378">SF + Marin</text><text x="300" y="378" text-anchor="end" fill="#7a9a7a" font-weight="600">29</text>
+    <circle cx="71" cy="408" r="8" fill="#1D9E75"/><text x="92" y="414">Peninsula</text><text x="300" y="414" text-anchor="end" fill="#7a9a7a" font-weight="600">35</text>
+    <circle cx="71" cy="444" r="8" fill="#EF9F27"/><text x="92" y="450">South Bay</text><text x="300" y="450" text-anchor="end" fill="#7a9a7a" font-weight="600">24</text>
+    <circle cx="71" cy="480" r="8" fill="#378ADD"/><text x="92" y="486">East Bay</text><text x="300" y="486" text-anchor="end" fill="#7a9a7a" font-weight="600">18</text>
+  </g>
+
+  <g font-size="15" fill="#6a8a6a">
+    <circle cx="71" cy="536" r="7" fill="#6a8a6a"/><text x="88" y="541">dog-friendly</text>
+    <circle cx="206" cy="536" r="6.5" fill="#f0f4f0" stroke="#6a8a6a" stroke-width="2.5"/><text x="223" y="541">no dogs</text>
+  </g>
+  <text x="60" y="585" font-size="13" fill="#9ab09a">Each dot is a trailhead · positions approximate</text>
+</svg>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+(function(){
+ const COL=["#7F77DD","#1D9E75","#EF9F27","#378ADD"];
+ // [lon, lat, regionIndex, dog(1/0)]
+ const T=[
+  [-122.506,37.785,0,1],[-122.447,37.752,0,1],[-122.442,37.740,0,1],[-122.465,37.804,0,1],[-122.420,37.717,0,1],[-122.502,37.715,0,1],[-122.458,37.758,0,1],[-122.475,37.770,0,1],[-122.456,37.794,0,1],[-122.493,37.728,0,1],[-122.483,37.793,0,0],[-122.385,37.713,0,1],[-122.500,37.716,0,1],[-122.508,37.786,0,1],
+  [-122.536,37.860,0,0],[-122.546,37.903,0,0],[-122.604,37.902,0,0],[-122.740,38.040,0,1],[-122.800,38.040,0,0],[-122.494,37.917,0,1],[-122.572,38.150,0,0],[-122.630,37.955,0,1],[-122.560,37.934,0,1],[-122.595,37.984,0,1],[-122.595,38.135,0,1],[-122.690,38.013,0,1],[-122.625,37.903,0,1],[-122.537,37.832,0,1],[-122.747,37.935,0,0],
+  [-122.346,37.435,1,0],[-122.232,37.378,1,1],[-122.350,37.520,1,0],[-122.456,37.612,1,1],[-122.279,37.469,1,0],[-122.299,37.434,1,0],[-122.292,37.479,1,1],[-122.146,37.388,1,1],[-122.106,37.459,1,1],[-122.080,37.432,1,0],[-122.494,37.629,1,1],[-122.497,37.626,1,1],[-122.514,37.576,1,1],[-122.310,37.412,1,0],[-122.196,37.323,1,0],[-122.175,37.330,1,0],[-122.205,37.331,1,1],[-122.510,37.553,1,1],[-122.510,37.567,1,1],[-122.470,37.585,1,0],[-122.301,37.438,1,0],[-122.280,37.270,1,0],[-122.430,37.462,1,1],[-122.177,37.408,1,0],[-122.498,37.497,1,1],[-122.440,37.420,1,0],[-122.499,37.497,1,1],[-122.458,37.443,1,1],[-122.443,37.430,1,1],[-122.213,37.372,1,1],[-122.225,37.384,1,1],[-122.142,37.358,1,1],[-122.260,37.395,1,1],[-122.146,37.389,1,1],[-122.175,37.323,1,0],
+  [-121.846,37.183,2,1],[-121.846,37.183,2,1],[-121.846,37.183,2,1],[-121.846,37.183,2,1],[-121.846,37.183,2,1],[-121.789,37.213,2,1],[-121.984,37.205,2,1],[-122.087,37.332,2,0],[-122.087,37.332,2,0],[-122.087,37.332,2,0],[-122.087,37.332,2,0],[-121.798,37.396,2,0],[-121.897,37.158,2,0],[-121.802,37.165,2,1],[-121.900,37.083,2,1],[-122.085,37.247,2,1],[-122.078,37.297,2,1],[-122.085,37.300,2,0],[-122.073,37.302,2,1],[-121.984,37.205,2,1],[-122.095,37.256,2,1],[-122.110,37.290,2,1],[-121.712,37.335,2,1],[-121.500,37.120,2,1],
+  [-121.918,37.508,3,1],[-122.243,37.901,3,1],[-122.155,37.928,3,1],[-122.160,37.795,3,1],[-122.055,37.815,3,1],[-121.866,37.964,3,1],[-122.095,37.555,3,1],[-122.198,37.855,3,1],[-121.789,37.818,3,1],[-122.310,37.925,3,1],[-121.900,37.625,3,1],[-121.832,37.555,3,1],[-121.770,37.910,3,0],[-122.110,37.730,3,1],[-122.183,37.832,3,1],[-121.938,37.918,3,0],[-122.323,37.899,3,1],[-121.910,37.555,3,1]
+ ];
+ const FIPS=new Set(["06075","06041","06081","06085","06001","06013"]);
+ const svg=d3.select('#og');
+ const proj=d3.geoMercator();
+ d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json').then(function(us){
+   const all=topojson.feature(us,us.objects.counties).features.filter(f=>FIPS.has(f.id));
+   const fc={type:'FeatureCollection',features:all};
+   proj.fitExtent([[565,70],[1150,575]],fc);
+   const path=d3.geoPath(proj);
+   const gMap=svg.append('g');
+   gMap.selectAll('path').data(all).join('path').attr('d',path)
+     .attr('fill','#e6ece6').attr('stroke','#c9d6c9').attr('stroke-width',0.8);
+   const pts=T.map(t=>{const p=proj([t[0],t[1]]);return{c:COL[t[2]],dog:t[3],x:p[0],y:p[1]};});
+   const groups={};pts.forEach(p=>{const k=Math.round(p.x)+'_'+Math.round(p.y);(groups[k]=groups[k]||[]).push(p);});
+   Object.values(groups).forEach(arr=>{if(arr.length>1){arr.forEach((p,i)=>{const a=(i/arr.length)*6.2832;p.x+=Math.cos(a)*7;p.y+=Math.sin(a)*7;});}});
+   const gDot=svg.append('g');
+   gDot.selectAll('circle').data(pts).join('circle')
+     .attr('cx',d=>d.x).attr('cy',d=>d.y).attr('r',6.5)
+     .attr('fill',d=>d.dog?d.c:'#eef3ee')
+     .attr('stroke',d=>d.dog?'#f0f4f0':d.c)
+     .attr('stroke-width',d=>d.dog?1:2.5);
+   window.__mapReady=true;
+ });
+})();
+</script>
+</body>
+</html>
