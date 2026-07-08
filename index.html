@@ -19,60 +19,96 @@
   <meta name="twitter:title" content="Bay Area Trail &amp; Beer Finder" />
   <meta name="twitter:description" content="100+ hand-verified Bay Area trails, each paired with a dog-friendly post-hike beer spot." />
   <meta name="twitter:image" content="https://atodorova-5678.github.io/Hiking/trail-map-preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #f4f6f4;
+      --topo: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'560'%20height%3D'560'%3E%3Cpath%20d%3D'M177.3%20157.1Q185.0%20165.0%20178.8%20174.0Q172.6%20183.1%20161.3%20185.7Q150.0%20188.3%20137.2%20186.9Q124.4%20185.5%20122.7%20175.2Q121.0%20165.0%20124.2%20155.9Q127.3%20146.9%20138.7%20142.0Q150.0%20137.1%20159.8%20143.2Q169.7%20149.3%20177.3%20157.1Z'%20fill%3D'none'%20stroke%3D'%232e5238'%20stroke-opacity%3D'0.07'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M200.5%20150.6Q214.9%20165.0%20202.0%20180.6Q189.1%20196.3%20169.6%20202.6Q150.0%20208.9%20127.0%20205.4Q104.0%20201.8%20101.4%20183.4Q98.9%20165.0%20103.0%20147.8Q107.1%20130.7%20128.5%20123.4Q150.0%20116.1%20168.0%20126.2Q186.0%20136.2%20200.5%20150.6Z'%20fill%3D'none'%20stroke%3D'%232e5238'%20stroke-opacity%3D'0.07'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M226.0%20143.1Q247.2%20165.0%20226.4%20187.3Q205.6%20209.5%20177.8%20221.3Q150.0%20233.2%20116.6%20225.8Q83.2%20218.4%2079.2%20191.7Q75.2%20165.0%2079.6%20138.6Q84.0%20112.2%20117.0%20103.9Q150.0%2095.6%20177.4%20108.3Q204.8%20121.1%20226.0%20143.1Z'%20fill%3D'none'%20stroke%3D'%232e5238'%20stroke-opacity%3D'0.07'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M251.9%20134.8Q278.2%20165.0%20249.8%20193.6Q221.4%20222.2%20185.7%20240.8Q150.0%20259.5%20107.2%20246.5Q64.3%20233.6%2057.3%20199.3Q50.2%20165.0%2055.2%20129.1Q60.2%2093.2%20105.1%2085.1Q150.0%2077.1%20187.8%2090.8Q225.5%20104.6%20251.9%20134.8Z'%20fill%3D'none'%20stroke%3D'%232e5238'%20stroke-opacity%3D'0.07'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M277.7%20125.6Q306.9%20165.0%20272.2%20200.0Q237.5%20235.0%20193.8%20261.2Q150.0%20287.3%2098.8%20267.1Q47.6%20247.0%2035.2%20206.0Q22.9%20165.0%2029.8%20119.7Q36.7%2074.4%2093.3%2067.2Q150.0%2060.1%20199.2%2073.2Q248.4%2086.3%20277.7%20125.6Z'%20fill%3D'none'%20stroke%3D'%232e5238'%20stroke-opacity%3D'0.07'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M453.2%20404.3Q458.5%20412.0%20452.4%20419.1Q446.4%20426.1%20438.2%20430.9Q430.0%20435.6%20420.6%20431.9Q411.1%20428.3%20408.8%20420.1Q406.5%20412.0%20408.1%20403.3Q409.7%20394.5%20419.8%20392.7Q430.0%20390.9%20438.9%20393.8Q447.9%20396.6%20453.2%20404.3Z'%20fill%3D'none'%20stroke%3D'%232e5238'%20stroke-opacity%3D'0.07'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M476.4%20396.0Q485.6%20412.0%20474.2%20426.1Q462.7%20440.2%20446.4%20450.3Q430.0%20460.5%20411.8%20451.9Q393.6%20443.3%20387.6%20427.6Q381.6%20412.0%20385.4%20394.5Q389.2%20376.9%20409.6%20374.0Q430.0%20371.1%20448.6%20375.6Q467.1%20380.1%20476.4%20396.0Z'%20fill%3D'none'%20stroke%3D'%232e5238'%20stroke-opacity%3D'0.07'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M500.2%20386.8Q511.9%20412.0%20496.1%20433.6Q480.3%20455.3%20455.2%20471.1Q430.0%20487.0%20403.4%20472.4Q376.8%20457.8%20365.3%20434.9Q353.9%20412.0%20361.3%20385.6Q368.6%20359.2%20399.3%20355.1Q430.0%20351.1%20459.2%20356.4Q488.5%20361.7%20500.2%20386.8Z'%20fill%3D'none'%20stroke%3D'%232e5238'%20stroke-opacity%3D'0.07'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M523.4%20377.2Q535.9%20412.0%20517.5%20441.7Q499.2%20471.5%20464.6%20492.3Q430.0%20513.2%20395.5%20492.3Q360.9%20471.4%20342.4%20441.7Q323.9%20412.0%20336.6%20377.3Q349.3%20342.6%20389.6%20336.7Q430.0%20330.9%20470.4%20336.7Q510.8%20342.5%20523.4%20377.2Z'%20fill%3D'none'%20stroke%3D'%232e5238'%20stroke-opacity%3D'0.07'%20stroke-width%3D'1'%2F%3E%3C%2Fsvg%3E");
+      --card: #ffffff;
+      --text: #1d2620;
+      --muted: #64756a;
+      --accent: #20512f;
+      --accent-soft: #e7efe8;
+      --btn-text: #ffffff;
+      --border: #e3e9e4;
+      --chip: #eef2ee;
+      --note-bg: #faf6e4;
+      --note-border: #ece1b8;
+      --note-text: #6d5c22;
+      --no-dogs: #a85f55;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141815;
+        --topo: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'560'%20height%3D'560'%3E%3Cpath%20d%3D'M177.3%20157.1Q185.0%20165.0%20178.8%20174.0Q172.6%20183.1%20161.3%20185.7Q150.0%20188.3%20137.2%20186.9Q124.4%20185.5%20122.7%20175.2Q121.0%20165.0%20124.2%20155.9Q127.3%20146.9%20138.7%20142.0Q150.0%20137.1%20159.8%20143.2Q169.7%20149.3%20177.3%20157.1Z'%20fill%3D'none'%20stroke%3D'%23a8c9b0'%20stroke-opacity%3D'0.055'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M200.5%20150.6Q214.9%20165.0%20202.0%20180.6Q189.1%20196.3%20169.6%20202.6Q150.0%20208.9%20127.0%20205.4Q104.0%20201.8%20101.4%20183.4Q98.9%20165.0%20103.0%20147.8Q107.1%20130.7%20128.5%20123.4Q150.0%20116.1%20168.0%20126.2Q186.0%20136.2%20200.5%20150.6Z'%20fill%3D'none'%20stroke%3D'%23a8c9b0'%20stroke-opacity%3D'0.055'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M226.0%20143.1Q247.2%20165.0%20226.4%20187.3Q205.6%20209.5%20177.8%20221.3Q150.0%20233.2%20116.6%20225.8Q83.2%20218.4%2079.2%20191.7Q75.2%20165.0%2079.6%20138.6Q84.0%20112.2%20117.0%20103.9Q150.0%2095.6%20177.4%20108.3Q204.8%20121.1%20226.0%20143.1Z'%20fill%3D'none'%20stroke%3D'%23a8c9b0'%20stroke-opacity%3D'0.055'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M251.9%20134.8Q278.2%20165.0%20249.8%20193.6Q221.4%20222.2%20185.7%20240.8Q150.0%20259.5%20107.2%20246.5Q64.3%20233.6%2057.3%20199.3Q50.2%20165.0%2055.2%20129.1Q60.2%2093.2%20105.1%2085.1Q150.0%2077.1%20187.8%2090.8Q225.5%20104.6%20251.9%20134.8Z'%20fill%3D'none'%20stroke%3D'%23a8c9b0'%20stroke-opacity%3D'0.055'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M277.7%20125.6Q306.9%20165.0%20272.2%20200.0Q237.5%20235.0%20193.8%20261.2Q150.0%20287.3%2098.8%20267.1Q47.6%20247.0%2035.2%20206.0Q22.9%20165.0%2029.8%20119.7Q36.7%2074.4%2093.3%2067.2Q150.0%2060.1%20199.2%2073.2Q248.4%2086.3%20277.7%20125.6Z'%20fill%3D'none'%20stroke%3D'%23a8c9b0'%20stroke-opacity%3D'0.055'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M453.2%20404.3Q458.5%20412.0%20452.4%20419.1Q446.4%20426.1%20438.2%20430.9Q430.0%20435.6%20420.6%20431.9Q411.1%20428.3%20408.8%20420.1Q406.5%20412.0%20408.1%20403.3Q409.7%20394.5%20419.8%20392.7Q430.0%20390.9%20438.9%20393.8Q447.9%20396.6%20453.2%20404.3Z'%20fill%3D'none'%20stroke%3D'%23a8c9b0'%20stroke-opacity%3D'0.055'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M476.4%20396.0Q485.6%20412.0%20474.2%20426.1Q462.7%20440.2%20446.4%20450.3Q430.0%20460.5%20411.8%20451.9Q393.6%20443.3%20387.6%20427.6Q381.6%20412.0%20385.4%20394.5Q389.2%20376.9%20409.6%20374.0Q430.0%20371.1%20448.6%20375.6Q467.1%20380.1%20476.4%20396.0Z'%20fill%3D'none'%20stroke%3D'%23a8c9b0'%20stroke-opacity%3D'0.055'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M500.2%20386.8Q511.9%20412.0%20496.1%20433.6Q480.3%20455.3%20455.2%20471.1Q430.0%20487.0%20403.4%20472.4Q376.8%20457.8%20365.3%20434.9Q353.9%20412.0%20361.3%20385.6Q368.6%20359.2%20399.3%20355.1Q430.0%20351.1%20459.2%20356.4Q488.5%20361.7%20500.2%20386.8Z'%20fill%3D'none'%20stroke%3D'%23a8c9b0'%20stroke-opacity%3D'0.055'%20stroke-width%3D'1'%2F%3E%3Cpath%20d%3D'M523.4%20377.2Q535.9%20412.0%20517.5%20441.7Q499.2%20471.5%20464.6%20492.3Q430.0%20513.2%20395.5%20492.3Q360.9%20471.4%20342.4%20441.7Q323.9%20412.0%20336.6%20377.3Q349.3%20342.6%20389.6%20336.7Q430.0%20330.9%20470.4%20336.7Q510.8%20342.5%20523.4%20377.2Z'%20fill%3D'none'%20stroke%3D'%23a8c9b0'%20stroke-opacity%3D'0.055'%20stroke-width%3D'1'%2F%3E%3C%2Fsvg%3E");
+        --card: #1c221e;
+        --text: #e7ece8;
+        --muted: #97a69b;
+        --accent: #79bd88;
+        --accent-soft: #243127;
+        --btn-text: #10241a;
+        --border: #2a322c;
+        --chip: #232a25;
+        --note-bg: #292515;
+        --note-border: #46402a;
+        --note-text: #d3c488;
+        --no-dogs: #cf8b80;
+      }
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f0f4f0;
+      background-color: var(--bg);
+      background-image: var(--topo);
+      background-size: 560px 560px;
+      color: var(--text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 48px 16px;
+      padding: max(44px, env(safe-area-inset-top)) 18px max(64px, env(safe-area-inset-bottom));
     }
 
+    h1, .trail-name, .go-btn { font-family: "Bricolage Grotesque", -apple-system, sans-serif; }
+
     h1 {
-      font-size: 1.75rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: #1a2e1a;
-      margin-bottom: 4px;
+      letter-spacing: -0.015em;
+      text-align: center;
+      margin-bottom: 8px;
     }
 
     .tagline {
-      color: #3a5a3a;
-      font-size: 1rem;
-      font-style: italic;
-      margin-bottom: 6px;
-    }
-
-    .subtitle {
-      color: #5a7a5a;
-      font-size: 0.85rem;
-      margin-bottom: 36px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+      max-width: 340px;
+      line-height: 1.55;
     }
 
     .controls {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
-      margin-top: 34px;
+      gap: 15px;
+      margin-top: 32px;
       margin-bottom: 36px;
+      width: 100%;
     }
 
-    .toggle-row {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
+    .toggle-row { display: flex; align-items: center; gap: 26px; }
 
     .filter-row {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1rem;
-      color: #2d4a2d;
+      gap: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
       cursor: pointer;
       user-select: none;
     }
@@ -80,171 +116,8 @@
     .filter-row input[type="checkbox"] {
       width: 20px;
       height: 20px;
-      accent-color: #3a7d44;
+      accent-color: var(--accent);
       cursor: pointer;
-    }
-
-    .go-btn {
-      background: #3a7d44;
-      color: white;
-      border: none;
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.15s, transform 0.1s;
-      box-shadow: 0 4px 14px rgba(58, 125, 68, 0.35);
-    }
-
-    .go-btn:hover { background: #2e6338; }
-    .go-btn:active { transform: scale(0.97); }
-
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 32px;
-      max-width: 480px;
-      width: 100%;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-      animation: pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    @keyframes pop {
-      from { opacity: 0; transform: scale(0.93) translateY(10px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 6px;
-    }
-
-    .trail-name {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #1a2e1a;
-      line-height: 1.25;
-    }
-
-    .badge {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-      margin-left: 12px;
-      flex-shrink: 0;
-    }
-
-    .badge-hike  { background: #e8f5e9; color: #2e7d32; }
-    .badge-run   { background: #e3f2fd; color: #1565c0; }
-    .badge-both  { background: #f3e5f5; color: #6a1b9a; }
-
-    .region-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .region {
-      font-size: 0.85rem;
-      color: #7a9a7a;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .map-link {
-      font-size: 0.78rem;
-      color: #3a7d44;
-      text-decoration: none;
-      font-weight: 600;
-      border: 1px solid #c8e6c9;
-      border-radius: 12px;
-      padding: 2px 8px;
-      white-space: nowrap;
-      transition: background 0.12s;
-    }
-    .map-link:hover { background: #e8f5e9; }
-
-    .description {
-      color: #3a4a3a;
-      font-size: 0.97rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .meta {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    .meta-pill {
-      font-size: 0.82rem;
-      padding: 4px 12px;
-      border-radius: 20px;
-      background: #f0f4f0;
-      color: #4a6a4a;
-      font-weight: 500;
-    }
-
-    .dog-note {
-      font-size: 0.88rem;
-      color: #5a7a5a;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid #eef2ee;
-    }
-
-    .posthike { margin-top: 16px; }
-
-    .posthike-title {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #9a7a3a;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 10px;
-    }
-
-    .posthike-item {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      padding: 7px 0;
-      border-bottom: 1px solid #f5f2ea;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.1s;
-      border-radius: 4px;
-    }
-    .posthike-item:last-of-type { border-bottom: none; }
-    .posthike-item:hover { background: #fffbf0; }
-
-    .posthike-item-inner { font-size: 0.88rem; color: #3a3a2a; line-height: 1.5; }
-    .posthike-item-inner strong { color: #1a1a0a; }
-
-    .posthike-item .map-arrow {
-      font-size: 0.75rem;
-      color: #b8943a;
-      white-space: nowrap;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-
-    .posthike-disclaimer {
-      font-size: 0.75rem;
-      color: #bbb;
-      margin-top: 10px;
-      font-style: italic;
     }
 
     .region-filters {
@@ -255,32 +128,119 @@
     }
 
     .region-btn {
-      background: white;
-      color: #3a7d44;
-      border: 1.5px solid #c8e6c9;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.88rem;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
       font-weight: 600;
+      font-family: inherit;
       cursor: pointer;
       transition: background 0.12s, color 0.12s, border-color 0.12s;
     }
-    .region-btn:hover { background: #e8f5e9; }
     .region-btn.active {
-      background: #3a7d44;
-      color: white;
-      border-color: #3a7d44;
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--btn-text);
     }
 
-    .no-results {
-      color: #7a9a7a;
-      font-size: 1rem;
-      text-align: center;
-      padding: 24px;
-      background: white;
+    .go-btn {
+      background: var(--accent);
+      color: var(--btn-text);
+      border: none;
+      padding: 16px 42px;
+      border-radius: 999px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+      transition: filter 0.15s, transform 0.08s;
+    }
+    .go-btn:hover { filter: brightness(1.07); }
+    .go-btn:active { transform: scale(0.97); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 16px;
-      max-width: 380px;
+      padding: 26px 24px;
+      max-width: 480px;
       width: 100%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      animation: pop 0.22s ease-out;
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-header { margin-bottom: 6px; }
+
+    .trail-name {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+
+    .region-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 9px 0 16px;
+    }
+
+    .region {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .map-link {
+      font-size: 0.76rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px 9px;
+      white-space: nowrap;
+      transition: background 0.12s;
+    }
+    .map-link:hover { background: var(--accent-soft); }
+
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+
+    .meta-pill {
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .dog-note {
+      font-size: 0.87rem;
+      color: var(--muted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 13px;
+      border-bottom: 1px solid var(--border);
     }
 
     .heads-up {
@@ -289,38 +249,90 @@
       align-items: flex-start;
       font-size: 0.84rem;
       line-height: 1.5;
-      color: #8a6d1f;
-      background: #fff8e1;
-      border: 1px solid #f3e5b8;
+      color: var(--note-text);
+      background: var(--note-bg);
+      border: 1px solid var(--note-border);
       border-radius: 10px;
-      padding: 9px 13px;
-      margin-bottom: 14px;
+      padding: 9px 12px;
+      margin-bottom: 13px;
+    }
+
+    .posthike { margin-top: 16px; }
+
+    .posthike-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .posthike-item {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+    }
+    .posthike-item:last-of-type { border-bottom: none; }
+    .posthike-item:hover .posthike-item-inner strong { color: var(--accent); }
+
+    .posthike-item-inner { font-size: 0.87rem; line-height: 1.55; }
+    .posthike-item-inner strong { font-weight: 600; transition: color 0.12s; }
+
+    .posthike-item .map-arrow {
+      font-size: 0.76rem;
+      color: var(--muted);
+      white-space: nowrap;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .posthike-disclaimer {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .no-results {
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      max-width: 380px;
+      width: 100%;
+      color: var(--muted);
     }
 
     .share-row {
       display: flex;
       justify-content: flex-end;
-      margin-top: 18px;
-      padding-top: 12px;
-      border-top: 1px solid #eef2ee;
+      margin-top: 16px;
+      padding-top: 13px;
+      border-top: 1px solid var(--border);
     }
     .share-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       background: none;
-      border: 1.5px solid #d4e4d4;
-      border-radius: 20px;
-      padding: 7px 16px;
-      font-size: 0.79rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 15px;
+      font-size: 0.78rem;
       font-weight: 600;
-      color: #8aad8a;
+      color: var(--muted);
       cursor: pointer;
-      transition: border-color 0.15s, color 0.15s, background 0.15s;
+      transition: color 0.15s, border-color 0.15s;
       font-family: inherit;
-      letter-spacing: 0.02em;
     }
-    .share-btn:hover { border-color: #3a7d44; color: #3a7d44; background: #f5fbf5; }
+    .share-btn:hover { color: var(--accent); border-color: var(--accent); }
     .share-btn:disabled { opacity: 0.45; cursor: default; }
   </style>
 </head>
@@ -2176,7 +2188,7 @@
 
     const dogNote = trail.dogs
       ? `<div class="dog-note">🐾 <span>${trail.dogNote || 'Dogs allowed on leash'}</span></div>`
-      : `<div class="dog-note" style="color:#b07070;">🚫 <span>No dogs permitted</span></div>`;
+      : `<div class="dog-note" style="color:var(--no-dogs);">🚫 <span>No dogs permitted</span></div>`;
 
     const headsUpNote = trail.headsUp
       ? `<div class="heads-up">💡 <span>${trail.headsUp}</span></div>`
@@ -2197,7 +2209,7 @@
         <div class="region-row">
           <span class="region">${trail.displayRegion || trail.region}</span>
           <a href="${mapsUrl(trail.trailhead)}" target="_blank" class="map-link">📍 Trailhead</a>
-          <a href="${trail.allTrailsUrl}" target="_blank" class="map-link" style="background:#eef6ff;border-color:#b3d9ff;color:#1565c0;">🥾 AllTrails</a>
+          <a href="${trail.allTrailsUrl}" target="_blank" class="map-link">🥾 AllTrails</a>
         </div>
         <p class="description">${trail.description}</p>
         <div class="meta">
