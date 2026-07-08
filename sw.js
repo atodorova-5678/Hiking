@@ -1,4 +1,4 @@
-const CACHE = 'trail-beer-v1';
+const CACHE = 'trail-beer-v2';
 const SHELL = ['./', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-180.png'];
 
 self.addEventListener('install', e => {
